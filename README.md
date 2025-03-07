@@ -1,2 +1,1 @@
-## cognifyz data science internship project 
-## github repository
+## end to end ml project
