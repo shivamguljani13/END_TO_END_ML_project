@@ -13,6 +13,11 @@ def get_requirements(file_path: str) -> List[str]:
             requirements.remove(HYPEN)
     return requirements
 
+
+
+
+
+
 setup(
     name='cognifyz_data_science_internship',
     version='0.1',
