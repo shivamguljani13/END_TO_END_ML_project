@@ -40,7 +40,11 @@ class DataIngestion:
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
             # this will save the train and test set in the respective paths
             logging.info('Ingestion of the data is completed')
-            return (self.ingestion_config.train_data_path,self.ingestion_config.test_data_path)
+            return (
+                self.ingestion_config.train_data_path,
+                self.ingestion_config.test_data_path
+                )
+            # this will return the train and test data paths when the data ingestion is completed successfully
         except Exception as e:
             raise CustomException(e,sys)
             # this will raise the custom exception if there is any error in the code    
