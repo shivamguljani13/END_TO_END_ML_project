@@ -6,13 +6,16 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation       
+#any input that is required is given t hrough this data ingestion config class
 
-#any input that is required is given through this data ingestion config class
+
 @dataclass
 class DataIngestionConfig:
     train_data_path:str=os.path.join('artifacts','train.csv')
     test_data_path:str=os.path.join('artifacts','test.csv')
-    raw_data_path:str=os.path.join('artifacts','data.csv')
+    raw_data_path:str=os.path.join('artifacts','data.csv')      
     # we can add more parameters if required in future  
 # it will tell components where to save the data and where to read the data from
 # this is the config class for data ingestioncomponent
@@ -51,6 +54,11 @@ class DataIngestion:
             
 if __name__=="__main__":
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
-    # this will create an instance of the data ingestion class and call the initiate_data_ingestion method to start the data ingestion process
+    train_data,test_data=obj.initiate_data_ingestion()
+    # this will create an instance of the data ingestion class and call the
+    # initiate_data_ingestion method to start the data ingestion process
     # this will be used to test the data ingestion component            
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data, test_data)
+    # this will create an instance of the data transformation class and 
+    # call the initiate_data_transformation method to start the data transformation process
