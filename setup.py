@@ -19,7 +19,7 @@ def get_requirements(file_path: str) -> List[str]:
 
 
 setup(
-    name='cognifyz_data_science_internship',
+    name='mlproject_requirements',
     version='0.1',
     author='Shivam',
     packages=find_packages(),

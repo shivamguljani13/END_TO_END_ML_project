@@ -8,9 +8,12 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformationConfig
 from src.components.data_transformation import DataTransformation       
-#any input that is required is given t hrough this data ingestion config class
+
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
+#any input that is required is given through this data ingestion config class
 @dataclass
 class DataIngestionConfig:
     train_data_path:str=os.path.join('artifacts','train.csv')
@@ -59,6 +62,11 @@ if __name__=="__main__":
     # initiate_data_ingestion method to start the data ingestion process
     # this will be used to test the data ingestion component            
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+    
     # this will create an instance of the data transformation class and 
     # call the initiate_data_transformation method to start the data transformation process
+    # this will be used to test the data transformation component
+   
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr))

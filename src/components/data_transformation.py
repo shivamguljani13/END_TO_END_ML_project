@@ -142,15 +142,13 @@ class DataTransformation:
                
                 )# this will save the preprocessor object to the specified path
                 
-                train_arr = np.array(target_feature_train_df)
-                test_arr = np.array(target_feature_test_df)
                 
                 logging.info("Data transformation completed")
                 
-                return ([
+                return (
                     train_arr,
                     test_arr,
-                    self.data_transformation_config.preprocessor_obj_file_path]
+                    self.data_transformation_config.preprocessor_obj_file_path
                 )
             except Exception as e:
                 raise CustomException(e, sys)
