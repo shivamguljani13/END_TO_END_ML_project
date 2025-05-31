@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template, redirect, url_for # Import redirect and url_for
 import numpy as np
 import pandas as pd
 
@@ -13,7 +13,7 @@ app=application
 
 @app.route('/')
 def index():
-    return render_template('index.html') 
+    return redirect(url_for('predict_datapoint')) 
 
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
@@ -36,10 +36,10 @@ def predict_datapoint():
 
         predict_pipeline=PredictPipeline()
         print("Mid Prediction")
-        results=predict_pipeline.predict(pred_df)
+        results=predict_pipeline.predict(pred_df) #this will return the prediction results
         print("after Prediction")
-        return render_template('home.html',results=results[0])
+        return render_template('index.html',results=results)
     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")        
+    app.run(host="0.0.0.0",debug=True)        

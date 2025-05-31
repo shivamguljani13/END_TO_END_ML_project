@@ -69,4 +69,4 @@ if __name__=="__main__":
     # this will be used to test the data transformation component
    
     model_trainer = ModelTrainer()
-    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
+    model_trainer.initiate_model_trainer(train_arr, test_arr)
